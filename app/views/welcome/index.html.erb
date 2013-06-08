@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+		body{
+			background-color: #F5F5DC;
+		}
+		div.osn{
+			width: 300px;
+			margin: 20px auto;
+			text-align: center;
+			border: 4px solid #964B00;
+			background-color: #F5DEB3;
+			border-radius: 10px;
+			padding: 0px 20px 20px 20px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="osn">
+			<h1>Игра "Палочки"</h1>
+			<form>
+				<input type="button" id="new" value="Начать игру">
+			</form>
+				<script>	
+				var but=document.getElementById('new')
+				but.addEventListener("click",
+					function getrandom() { 
+						var min_random = 20;
+						var max_random = 40;
+						max_random++;
+						var range = max_random - min_random;
+						var k=Math.floor(Math.random()*range) + min_random;
+						var choise= Math.random();
+							if (choise<=0.5) {
+								choise='Браузер';
+							}
+							else {
+								choise='Сервер';
+							}
+						alert("Количество палочек будет равно " + k +", а игру начнет " + choise);
+
+						if (choise=='Браузер') {
+									window.location.assign("/welcome/two/?a=" + k + "&b=" + 0);
+								}
+								else {
+									window.location.assign("/welcome/redirector/?a=" + k + "&b=" + 0);
+								}
+					},
+				 false);
+			</script>
+			<p><%= link_to 'Все игры', games_path %></p>
+	</body>
+</html>
